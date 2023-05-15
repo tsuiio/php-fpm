@@ -1,0 +1,53 @@
+version: '2'
+
+services:
+  php-fpm:
+    restart: always
+    build: php
+    #container_name: php-fpm
+   # image: php:8.2.4-fpm
+    volumes:
+        - ./php/php.ini:/usr/local/etc/php/php.ini
+        - ./www:/var/www
+        - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "127.0.0.1:9001:9000"
+    networks:
+      - external_network
+      - internal_network
+    
+  db:
+    restart: always
+    image: mysql:8.0.32
+    hostname: mysql
+    #container_name: mysql
+    #command: --default-authentication-plugin=mysql_native_password
+    volumes:
+        - ./mysql/data:/var/lib/mysql
+        - ./mysql/conf:/etc/mysql
+        - ./mysql/log:/var/log/mysql
+        - /etc/localtime:/etc/localtime:ro
+    environment:
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_ROOT_HOST: "%"
+  #  ports:
+      #  - "127.0.0.1:3306:3306"
+    networks:
+      - internal_network
+    
+  redis:
+    restart: always
+    image: redis:7-alpine
+    networks:
+      - internal_network
+    volumes:
+      - ./redis:/data
+    healthcheck:
+      test: "redis-cli ping"
+      interval: 5s
+      retries: 20
+    
+networks:
+  internal_network:
+    internal: true
+  external_network:
