@@ -1,9 +1,10 @@
-FROM php:8.2.5-fpm
+FROM php:8.2.7-fpm
 
 COPY php.ini /usr/local/etc/php/php.ini
 
 RUN apt-get update && \
     apt-get install -y \
+        unzip \
         zlib1g-dev \
         libzstd-dev \
         libfreetype6-dev \

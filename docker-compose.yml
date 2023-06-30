@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   php-fpm:
@@ -27,8 +27,8 @@ services:
     environment:
         MYSQL_ROOT_PASSWORD: password
         MYSQL_ROOT_HOST: "%"
-  #  ports:
-      #  - "127.0.0.1:3306:3306"
+    #ports:
+    #  - "127.0.0.1:3306:3306"
     networks:
       - internal_network
     
