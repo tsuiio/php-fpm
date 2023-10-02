@@ -1,4 +1,4 @@
-FROM php:8.2.7-fpm
+FROM php:fpm-bullseye
 
 COPY php.ini /usr/local/etc/php/php.ini
 
