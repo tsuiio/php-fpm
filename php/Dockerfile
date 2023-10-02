@@ -1,4 +1,4 @@
-FROM php:fpm-bullseye
+FROM php:fpm-bookworm
 
 COPY php.ini /usr/local/etc/php/php.ini
 
