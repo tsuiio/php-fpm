@@ -1,4 +1,4 @@
-FROM php:8.4.3-fpm-bookworm 
+FROM php:8.4.4-fpm-bookworm 
 
 COPY php.ini /usr/local/etc/php/php.ini
 
