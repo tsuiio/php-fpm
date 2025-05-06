@@ -32,7 +32,7 @@ services:
     
   redis:
     restart: always
-    image: redis:7-alpine
+    image: redis:8-alpine
     networks:
       - internal_network
     volumes:
