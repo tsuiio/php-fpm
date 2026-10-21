@@ -35,7 +35,7 @@ RUN apt-get update && \
     && docker-php-ext-enable \
     igbinary \
     apcu redis imagick memcached mongodb \
-    && docker-php-ext-install -j "$(nproc)" bcmath gettext intl opcache gd pdo pdo_mysql pdo_pgsql pgsql shmop soap sockets sysvsem fileinfo exif xsl zip mysqli
+    && docker-php-ext-install -j "$(nproc)" bcmath gettext intl gd pdo pdo_mysql pdo_pgsql pgsql shmop soap sockets sysvsem fileinfo exif xsl zip mysqli
 
 RUN \
     { \
